@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: postgres
 spec:
-  serviceName: "postgres-svc"
+  serviceName: "postgres"
   replicas: 1
   selector:
     matchLabels:
@@ -50,7 +50,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-svc
+  name: postgres
 spec:
   selector:
     app: postgres
@@ -58,6 +58,7 @@ spec:
     - protocol: TCP
       port: 5432
       targetPort: 5432
+  clusterIP: None
 
 ---
 #apiVersion: v1
